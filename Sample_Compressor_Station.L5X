@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Fictional sample project for the n8n "L5X to IO List" template. No real site data. -->
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="33.01" TargetName="SAMPLE_CS_01" TargetType="Controller" ContainsContext="false" ExportDate="Sun Nov 22 15:00:00 2026" ExportOptions="NoRawData L5KData DecoratedData ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Target" Name="SAMPLE_CS_01" ProcessorType="1756-L83E" MajorRev="33" MinorRev="11" ProjectSN="16#0000_0000">
+<Description><![CDATA[Sample Compressor Station - fictional demo project]]></Description>
+
+<Modules>
+<Module Name="Local" CatalogNumber="1756-L83E" Vendor="1" ProductType="14" MajorRev="33" MinorRev="11" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="true">
+<Ports>
+<Port Id="1" Address="0" Type="ICP" Upstream="false"><Bus Size="10"/></Port>
+</Ports>
+</Module>
+<Module Name="DI_Slot1" CatalogNumber="1756-IB16" Vendor="1" ProductType="7" MajorRev="3" MinorRev="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false">
+<Description><![CDATA[24VDC Digital Input 16pt]]></Description>
+<Ports><Port Id="1" Address="1" Type="ICP" Upstream="true"/></Ports>
+</Module>
+<Module Name="DO_Slot2" CatalogNumber="1756-OB8" Vendor="1" ProductType="7" MajorRev="3" MinorRev="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false">
+<Description><![CDATA[24VDC Digital Output 8pt]]></Description>
+<Ports><Port Id="1" Address="2" Type="ICP" Upstream="true"/></Ports>
+</Module>
+<Module Name="AI_Slot3" CatalogNumber="1756-IF8" Vendor="1" ProductType="10" MajorRev="1" MinorRev="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false">
+<Description><![CDATA[Analog Input 8ch 4-20mA]]></Description>
+<Ports><Port Id="1" Address="3" Type="ICP" Upstream="true"/></Ports>
+</Module>
+<Module Name="AO_Slot4" CatalogNumber="1756-OF4" Vendor="1" ProductType="10" MajorRev="1" MinorRev="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false">
+<Description><![CDATA[Analog Output 4ch 4-20mA]]></Description>
+<Ports><Port Id="1" Address="4" Type="ICP" Upstream="true"/></Ports>
+</Module>
+</Modules>
+
+<Tags>
+<!-- Digital inputs: Local:1:I.Data.n -->
+<Tag Name="LSHH_101" TagType="Alias" AliasFor="Local:1:I.Data.0" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Inlet Scrubber Level Switch High-High]]></Description></Tag>
+<Tag Name="LSHH_201" TagType="Alias" AliasFor="Local:1:I.Data.1" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[1st Stage Scrubber Level Switch High-High]]></Description></Tag>
+<Tag Name="PSHH_102" TagType="Alias" AliasFor="Local:1:I.Data.2" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Suction Pressure Switch High-High]]></Description></Tag>
+<Tag Name="ESD_PB_01" TagType="Alias" AliasFor="Local:1:I.Data.3" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Control Room ESD Pushbutton]]></Description></Tag>
+<Tag Name="ESD_PB_02" TagType="Alias" AliasFor="Local:1:I.Data.4" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Compressor Building ESD Pushbutton]]></Description></Tag>
+<Tag Name="ZSO_301" TagType="Alias" AliasFor="Local:1:I.Data.5" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Suction Valve Open Limit]]></Description></Tag>
+<Tag Name="ZSC_301" TagType="Alias" AliasFor="Local:1:I.Data.5" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Suction Valve Closed Limit]]></Description></Tag>
+<Tag Name="MTR_401_RUN" TagType="Alias" AliasFor="Local:1:I.Data.7" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Cooler Fan Motor Running]]></Description></Tag>
+<Tag Name="XS_402" TagType="Alias" AliasFor="Local:1:I.Data.8" Radix="Decimal" ExternalAccess="Read/Write"/>
+<Tag Name="GD_501_ALM" TagType="Alias" AliasFor="Local:1:I.Data.9" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Compressor Building Gas Detector Alarm Relay]]></Description></Tag>
+
+<!-- Digital outputs: Local:2:O.Data.n -->
+<Tag Name="XY_101_ESD" TagType="Alias" AliasFor="Local:2:O.Data.0" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Inlet ESD Valve Solenoid]]></Description></Tag>
+<Tag Name="XY_301" TagType="Alias" AliasFor="Local:2:O.Data.1" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Suction Valve Solenoid]]></Description></Tag>
+<Tag Name="MTR_401_START" TagType="Alias" AliasFor="Local:2:O.Data.2" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Cooler Fan Motor Start]]></Description></Tag>
+<Tag Name="BCN_RED" TagType="Alias" AliasFor="Local:2:O.Data.3" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Red Alarm Beacon]]></Description></Tag>
+<Tag Name="HORN_01" TagType="Alias" AliasFor="Local:2:O.Data.4" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Site Alarm Horn]]></Description></Tag>
+
+<!-- Analog inputs: Local:3:I.ChnData -->
+<Tag Name="PT_102" TagType="Alias" AliasFor="Local:3:I.Ch0Data" Radix="Float" ExternalAccess="Read/Write"><Description><![CDATA[Suction Pressure 0-300 PSIG]]></Description></Tag>
+<Tag Name="PT_202" TagType="Alias" AliasFor="Local:3:I.Ch1Data" Radix="Float" ExternalAccess="Read/Write"><Description><![CDATA[Discharge Pressure 0-1500 PSIG]]></Description></Tag>
+<Tag Name="TT_203" TagType="Alias" AliasFor="Local:3:I.Ch2Data" Radix="Float" ExternalAccess="Read/Write"><Description><![CDATA[Discharge Temperature 0-400 DEGF]]></Description></Tag>
+<Tag Name="LT_101" TagType="Alias" AliasFor="Local:3:I.Ch3Data" Radix="Float" ExternalAccess="Read/Write"><Description><![CDATA[Inlet Scrubber Level 0-48 IN]]></Description></Tag>
+<Tag Name="FT_601" TagType="Alias" AliasFor="Local:3:I.Ch4Data" Radix="Float" ExternalAccess="Read/Write"><Description><![CDATA[Fuel Gas Flow 0-500 MCFD]]></Description></Tag>
+
+<!-- Analog outputs: Local:4:O.ChnData -->
+<Tag Name="FCV_701_OUT" TagType="Alias" AliasFor="Local:4:O.Ch0Data" Radix="Float" ExternalAccess="Read/Write"><Description><![CDATA[Recycle Valve Output 0-100 %]]></Description></Tag>
+<Tag Name="VFD_401_SPD" TagType="Alias" AliasFor="Local:4:O.Ch1Data" Radix="Float" ExternalAccess="Read/Write"><Description><![CDATA[Cooler Fan VFD Speed Reference 0-100 %]]></Description></Tag>
+
+<!-- Internal tags -->
+<Tag Name="ESD_TRIP" TagType="Base" DataType="BOOL" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[Station ESD Trip]]></Description></Tag>
+<Tag Name="ALM_RESET" TagType="Base" DataType="BOOL" Radix="Decimal" ExternalAccess="Read/Write"><Description><![CDATA[HMI Alarm Reset]]></Description></Tag>
+<Tag Name="RECYCLE_PID" TagType="Base" DataType="PID" ExternalAccess="Read/Write"><Description><![CDATA[Recycle Valve Suction Pressure Control]]></Description></Tag>
+<Tag Name="FAN_SPD_CMD" TagType="Base" DataType="REAL" Radix="Float" ExternalAccess="Read/Write"><Description><![CDATA[Cooler Fan Speed Command from Temp Loop]]></Description></Tag>
+</Tags>
+
+<Programs>
+<Program Name="MainProgram" TestEdits="false" MainRoutineName="MainRoutine" Disabled="false" UseAsFolder="false">
+<Routines>
+<Routine Name="MainRoutine" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N"><Comment><![CDATA[Station ESD - any shutdown input trips the station]]></Comment><Text><![CDATA[[XIO(ESD_PB_01) ,XIO(ESD_PB_02) ,XIC(LSHH_101) ,XIC(LSHH_201) ,XIC(PSHH_102) ,XIC(GD_501_ALM) ]OTL(ESD_TRIP);]]></Text></Rung>
+<Rung Number="1" Type="N"><Comment><![CDATA[ESD reset]]></Comment><Text><![CDATA[XIC(ALM_RESET)XIC(ESD_PB_01)XIC(ESD_PB_02)XIO(LSHH_101)XIO(LSHH_201)XIO(PSHH_102)XIO(GD_501_ALM)OTU(ESD_TRIP);]]></Text></Rung>
+<Rung Number="2" Type="N"><Comment><![CDATA[Inlet ESD valve - energize to open]]></Comment><Text><![CDATA[XIO(ESD_TRIP)OTE(XY_101_ESD);]]></Text></Rung>
+<Rung Number="3" Type="N"><Comment><![CDATA[Suction valve open command]]></Comment><Text><![CDATA[XIO(ESD_TRIP)XIC(ZSC_301)OTE(XY_301);]]></Text></Rung>
+<Rung Number="4" Type="N"><Comment><![CDATA[Cooler fan start]]></Comment><Text><![CDATA[XIO(ESD_TRIP)XIC(XS_402)OTE(MTR_401_START);]]></Text></Rung>
+<Rung Number="5" Type="N"><Comment><![CDATA[Alarm beacon and horn]]></Comment><Text><![CDATA[XIC(ESD_TRIP)[OTE(BCN_RED) ,OTE(HORN_01) ];]]></Text></Rung>
+<Rung Number="6" Type="N"><Comment><![CDATA[Suction valve maintenance open]]></Comment><Text><![CDATA[XIC(ALM_RESET)OTE(XY_301);]]></Text></Rung>
+<Rung Number="7" Type="N"><Comment><![CDATA[Recycle valve PID on suction pressure]]></Comment><Text><![CDATA[PID(RECYCLE_PID,PT_102,0,FCV_701_OUT,0,0,0);]]></Text></Rung>
+<Rung Number="8" Type="N"><Comment><![CDATA[Cooler fan speed reference]]></Comment><Text><![CDATA[MOV(PT_202,VFD_401_SPD);]]></Text></Rung>
+<Rung Number="9" Type="N"><Comment><![CDATA[High discharge temperature trip]]></Comment><Text><![CDATA[GRT(TT_203,350.0)OTL(ESD_TRIP);]]></Text></Rung>
+<Rung Number="10" Type="N"><Comment><![CDATA[High scrubber level trip]]></Comment><Text><![CDATA[GRT(LT_101,40.0)OTL(ESD_TRIP);]]></Text></Rung>
+<Rung Number="11" Type="N"><Comment><![CDATA[Fan run feedback]]></Comment><Text><![CDATA[XIC(MTR_401_START)XIO(MTR_401_RUN)NOP();]]></Text></Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</Program>
+</Programs>
+</Controller>
+</RSLogix5000Content>
